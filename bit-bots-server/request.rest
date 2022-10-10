@@ -1,0 +1,34 @@
+POST http://localhost:5000/api/v1/user/register-user
+Content-Type: application/json
+
+{
+    "userName": "Munna",
+    "email": "munna@gmail.com",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:5000/api/v1/user/login-user
+Content-Type: application/json
+
+{
+    "userName": "Munna",
+    "email": "munna@gmail.com",
+    "password": "password"
+}
+
+###
+PATCH  http://localhost:5000/api/v1/user/update-user
+Content-Type: application/json
+
+{
+    "firstName": "Munna",
+    "lastName": "Aziz Hridoy",
+    "zipCode": "1700",
+    "streetAddress": "Gazipur sadar, Gazipur",
+    "phone": "01312356293",
+    "email": "munna@gmail.com",
+    "password": "password"
+
+}

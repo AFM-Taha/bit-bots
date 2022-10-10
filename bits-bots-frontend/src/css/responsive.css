@@ -1,0 +1,188 @@
+@media all and (min-width: 768px){
+	.menuText ul{
+		display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
+	}
+	.left_checkBox_area_extra{
+		display: block !important;
+	}
+}
+
+@media all and (max-width: 991.98px){
+	.banner_area {
+		padding: 190px 0;
+	}
+	.item_single_area {
+		-webkit-box-flex: 0;
+		    -ms-flex: 0 0 32%;
+		        flex: 0 0 32%;
+	}
+	.item_singe_img {
+		height: 275px;
+	}
+	.item {
+		padding: 60px 0 70px 0;
+	}
+	.cart ul li a {
+		margin-right: 0px;
+	}
+	.menuText ul li a {
+		font-size: 17px;
+	}
+	.prodcutDetails button {
+		padding: 10px 32px;
+	}
+
+
+
+}
+
+@media all and (max-width: 767.98px){
+	.mobile_version_search {
+		text-align: right;
+	}
+	.mobile_version_search a {
+		display: inline-block;
+		font-size: 20px;
+		color: #fff;
+	}
+	.menuText ul {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		background: gainsboro;
+		top: 53px;
+		z-index: 999;
+		display: none;
+	}
+	.menu {
+		padding: 0px 0;
+	}
+
+	.cart ul li a img {
+		width: 35px;
+		margin: 0 3px;
+	}
+	.banner_area {
+		padding: 160px 0;
+	}
+	.banner-text {
+		font-size: 38px;
+	}
+	.item_single_area {
+		-webkit-box-flex: 0;
+		    -ms-flex: 0 0 48%;
+		        flex: 0 0 48%;
+	}
+	.cart ul li a {
+		margin-right: 3px;
+		font-size: 20px;
+	}
+	.cart ul li a img {
+		width: 25px;
+		padding: 2px 0px;
+		margin: 0 4px;
+	}
+	.menuText ul li a {
+		padding: 8px 17px;
+		display: block;
+		font-size: 16px;
+		-webkit-transition: .3s;
+		-o-transition: .3s;
+		transition: .3s;
+	}
+	.menuText ul li a:hover{
+		background-color: #0000003b;
+	}
+	.input_single_cart_main {
+		padding: 20px 20px 30px 20px;
+	}
+	.prodcut_price_details {
+		height: 221px;
+	}
+
+	.left_checkBox_area_extra {
+		position: fixed;
+		width: 100%;
+		background: rgba(0, 0, 0, 0.4);
+		left: 0;
+		top: 0;
+		display: none;
+		height: 100vh;
+	}
+	.left_checkBox_area{
+		width: 80%;
+		background: #fff;
+		height: 100%;
+		overflow-y: scroll;
+	}
+	.custom_checkbox_2 p span {
+		font-size: 20px;
+	}
+
+}
+@media all and (max-width: 575.98px){
+
+	.banner_area {
+		padding: 120px 0;
+	}
+	.banner-text {
+		font-size: 32px;
+	}
+	.logo a img {
+		width: 103px;
+	}
+	.item_single_text p {
+		font-size: 20px;
+	}
+	.item_single_text a{
+		font-size: 16px;
+	}
+	.item_single_text h4 {
+		font-size: 15px;
+	}
+	.item {
+		padding: 32px 0 45px 0;
+	}
+	.landingFormArea a {
+		font-size: 20px;
+	}
+	.prodcutDetails button {
+		padding: 8px 16px;
+		background: #8080807d;
+		font-size: 14px;
+	}
+	.product_text_area > button {
+		padding: 12px;
+	}
+	.add_cart_to_btn{
+		padding: 12px;
+	}
+
+}
+@media all and (max-width: 450px){
+	.item_single_area {
+		-webkit-box-flex: 0;
+		    -ms-flex: 0 0 100%;
+		        flex: 0 0 100%;
+	}
+	.input_single_cart input {
+		padding: 7px 12px;
+		font-size: 14px;
+	}
+	.landingFormArea a img {
+		margin-bottom: 30px;
+	}
+	.input_single_cart_main {
+		padding: 20px 10px 30px 10px;
+	}
+	.left_checkBox_area{
+		width: 90%;
+	}
+
+}

@@ -1,0 +1,888 @@
+html {
+  font-size: 62.5%;
+  /*line-height: 1.5;*/
+  /*#6fda44*/
+  /*#008329*/
+}
+body {
+  margin: 0;
+  font-family: "Arial";
+  font-weight: 400;
+  font-size: 1.4rem;
+  position: relative;
+}
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+menu {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+p {
+  font-size: 16px;
+}
+.banner-text {
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+}
+.btn-style {
+  background: #c5c3c0;
+  border: 0;
+  padding: 10px 44px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 100;
+  color: #000;
+  letter-spacing: 1px;
+  border: 1px solid transparent;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.btn-style:hover {
+  border: 1px solid gray;
+  background-color: #000;
+  color: #c5c3c0;
+}
+.landingPage .input_single_cartBtn input:hover {
+  color: #fff;
+}
+
+.card-element {
+  height: 400px !important;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+/* checkbox area start  */
+.aboutBox_MiddleCheckboxMain label {
+  margin: 8px 0;
+  display: block;
+}
+.custom_checkbox_2 {
+  position: relative;
+  cursor: pointer;
+}
+
+.custom_checkbox_2 input {
+  position: absolute;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.custom_checkbox_2 .checkmark {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 22px;
+  width: 23px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 2px;
+}
+.custom_checkbox_2 .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom_checkbox_2 input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+.custom_checkbox_2 input:checked ~ .checkmark:after {
+  display: block;
+}
+.custom_checkbox_2 .checkmark::after {
+  left: 5px;
+  top: -2px;
+  width: 10px;
+  height: 15px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(37deg);
+  transform: rotate(37deg);
+}
+.custom_checkbox_2 p span {
+  margin-left: 34px;
+  font-size: 14px;
+  color: #000;
+  text-transform: none;
+  display: block;
+  font-weight: 300;
+}
+
+/* checkbox end css */
+
+/*search icon*/
+.content_pop {
+  background: #e8e8e4;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+.content_pop::-webkit-scrollbar {
+  display: none;
+}
+.content_pop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: 999999999999;
+}
+#search-form {
+  width: 90%;
+  position: relative;
+}
+#search-form button {
+  position: absolute;
+  top: 12px;
+  left: 11px;
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  color: #b2b2b2c2;
+}
+.content_pop input[type="text"] {
+  width: 100%;
+  padding: 15px 20px 15px 60px;
+  border: 1px solid #14779f;
+  outline: none;
+  font-size: 16px;
+}
+#closesearch {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  color: #fff;
+  font-size: 50px;
+  background: transparent;
+  border: 0;
+}
+/* rakib er code  */
+
+.searchpopup {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.search_big.icon-search_icon {
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  z-index: 9999999999999999999;
+  position: fixed;
+}
+
+.zs-enabled .zs-slideshow .zs-bullets {
+  bottom: 119px;
+}
+/* Search area End  */
+
+/* desktop search option */
+/* humbergur menu  */
+/* Humber menu  */
+.rakibHumbergarMenu {
+  display: inline-block;
+  cursor: pointer;
+}
+.bar1,
+.bar2,
+.bar3 {
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  margin: 6px 0;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+.change .bar1 {
+  -webkit-transform: translate(0, 8px) rotate(-45deg);
+  -ms-transform: translate(0, 8px) rotate(-45deg);
+  transform: translate(0, 8px) rotate(-45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: translate(0, -8px) rotate(45deg);
+  -ms-transform: translate(0, -8px) rotate(45deg);
+  transform: translate(0, -8px) rotate(45deg);
+}
+
+/* ===============  0. Defolt css Area End  ============== */
+
+/* ===============  1. Hader css Area start  ============== */
+
+.header_area {
+  background-color: #171a21;
+  padding: 10px 0;
+}
+.header_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+/* Logo area start  */
+.logo a img {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/* search  */
+.desktopVersion_search {
+  width: 100%;
+}
+.desktopVersion_search form {
+  position: relative;
+}
+.desktopVersion_search form input {
+  width: 100%;
+  padding: 10px 10px 10px 37px;
+  font-size: 16px;
+  background-color: #c5c3c0;
+}
+.desktopVersion_search form button {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 35px;
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+}
+.search {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* card area */
+.cart ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.cart ul li a {
+  font-size: 35px;
+  color: #c5c3c0;
+  display: inline-block;
+  margin-right: 12px;
+  padding: 3px 10px;
+}
+.cart ul li a:hover {
+  color: #fff;
+}
+
+/* ===============  1. Hader css Area End  ============== */
+
+/* ===============  2. Menu css Area start  ============== */
+.menu {
+  background-color: #c5c3c0;
+  padding: 3px 0;
+}
+.menuText ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.menuText ul li a {
+  color: #000;
+  font-size: 20px;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 5px 17px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.menuText ul li a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* ===============  2. Menu css Area End  ============== */
+
+/* ===============  3. Menu css Area End  ============== */
+
+.banner_area {
+  padding: 220px 0;
+}
+.banner_text_area h1 {
+  text-align: center;
+}
+
+/* ===============  3. Menu css Area End  ============== */
+
+/* ===============  4. item css Area start  ============== */
+
+.item {
+  padding: 70px 0 90px 0;
+}
+.item_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  background: #c5c3c038;
+  padding: 10px 10px 20px 10px;
+}
+.item_single_area {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 18%;
+  flex: 0 0 18%;
+  height: 100%;
+  padding: 20px;
+}
+.item_single_area:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.item_singe_img {
+  height: 220px;
+}
+.item_single_area a {
+  display: block;
+}
+.item_single_area img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.item_single_text {
+  padding-top: 15px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.item_single_text h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.item_single_text p {
+  font-size: 22px;
+  font-weight: 700;
+}
+.item_single_text > a {
+  display: inline-block;
+  background: #c5c3c0;
+  width: 100%;
+  color: #000;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding: 5px 10px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.item_single_text a:hover {
+  background-color: #000;
+  color: #c5c3c0;
+}
+
+/* ===============  4. item css Area End  ============== */
+
+/* ===============  5. item css Area start  ============== */
+
+.footer_area {
+  padding: 50px 0;
+  border-top: 5px solid #c5c3c0;
+}
+.footer_single_item h4 {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 12px;
+}
+.footer_single_item ul li a {
+  color: #000;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.footer_single_item ul li a:hover {
+  text-decoration: underline;
+  color: #000000b5;
+}
+/* ===============  5. item css Area End  ============== */
+
+/* ===============  6. Checkbox css Area start  ============== */
+.checkBox {
+  padding: 50px 0 110px 0;
+}
+.checkbox_area h2 {
+  font-size: 23px;
+  font-weight: 600;
+  padding-bottom: 12px;
+}
+.left_checkBox_area {
+  background: #c5c3c038;
+  padding: 0px 15px;
+  padding-top: 30px;
+}
+.checkbox_area {
+  padding-bottom: 30px;
+}
+.checkbox_area label {
+  margin: 5px 0;
+  display: block;
+}
+
+.radio-checkbox .custom_checkbox_2 .checkmark {
+  border-radius: 12px;
+}
+.radio-checkbox .custom_checkbox_2 .checkmark::after {
+  left: 5px;
+  top: 1px;
+  width: 8px;
+  height: 13px;
+}
+
+/* right area  */
+.right_checkBox_area {
+  background: #c5c3c038;
+  padding: 20px;
+}
+/* ===============  6. Checkbox css Area End  ============== */
+
+/* ===============  7. pagination css Area start  ============== */
+
+.pagination_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.pagination {
+  padding: 20px 0;
+}
+.pagination_text ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.pagination_text p {
+  font-size: 17px;
+}
+.pagination_text ul li a {
+  padding: 9px 8px;
+  color: #000;
+  font-size: 14px;
+  position: relative;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.pagination_text ul li a:hover {
+  color: gray;
+}
+.pagination_text ul li a::after {
+  position: absolute;
+  content: "";
+  right: -1px;
+  height: 13px;
+  width: 1px;
+  background-color: #000;
+  z-index: 1;
+  top: 10px;
+  -webkit-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+
+/* ===============  7. pagination css Area End  ============== */
+
+/* ===============  8. prodcut css Area start  ============== */
+
+.product_item img {
+  width: 100%;
+  height: 400px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.product_images_area {
+  padding: 20px;
+  background: #acacac26;
+}
+.product_area .tab-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 14px 0px;
+}
+.product_area .tab-con button {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.product_area .tab-btn {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 31%;
+  flex: 0 0 31%;
+}
+.product_area .tab-btn img {
+  width: 100%;
+  height: 65px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.product_text_area > p {
+  padding-bottom: 14px;
+  font-size: 16px;
+  padding-top: 4px;
+  font-weight: 600;
+}
+.prodcutDetails button {
+  padding: 10px 40px;
+  border: 0;
+  background: #8080807d;
+  font-size: 16px;
+  font-weight: 40;
+  color: #000;
+}
+.prodcut_price_details {
+  height: 350px;
+}
+.prodcutDetails .buttonlinks.active {
+  background: #000 !important;
+  color: #fff;
+}
+.textContent h3 {
+  font-weight: 700;
+  font-size: 22px;
+  padding: 20px 0;
+}
+.product_text_area > button {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  border: 0;
+  color: #1a1d23;
+  background: #80808094;
+  transition: 0.3s;
+}
+.product_text_area > button:hover {
+  color: #fff;
+  background: #1a1d23;
+}
+.prodcut_content {
+  background: #acacac26;
+  padding: 30px 20px;
+  margin: 30px 0;
+}
+.prodcut_content p {
+  padding-bottom: 20px;
+}
+
+/* ===============  8. prodcut css Area End  ============== */
+
+/* ===============  9. CheckOut css Area Start  ============== */
+
+.checkout_left_item img {
+  height: 50px;
+  width: 40px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.checkout_single_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: #8080802e;
+  padding: 8px;
+  margin-bottom: 12px;
+  gap: 20px;
+}
+.checkout_left_item,
+.checkout_right_close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+}
+.checkout_right_close span {
+  display: inline-block;
+  background: gray;
+  height: 21px;
+  width: 21px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* filter  */
+.filter {
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+.filter a {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.cart-count{
+  background-color: #009444;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-right: 5px;
+
+}
+
+/* ===============  9. CheckOut css Area End  ============== */
+
+/* ===============  9. CheckOut css Area End  ============== */
+
+.input_single_cart_main {
+  background: #8080802e;
+  padding: 20px 20px 70px 20px;
+  margin-bottom: 30px;
+}
+.input_single_cart_main h2 {
+  font-size: 32px;
+  color: #000;
+  font-weight: 400;
+  padding-bottom: 20px;
+}
+.input_single_cart input {
+  padding: 9px 15px;
+  font-size: 15px;
+  border-radius: 0;
+  border: 1px solid #000;
+  background-color: transparent;
+}
+.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.input_single_cartBtn,
+.checkout_cart_btn {
+  text-align: right;
+}
+.checkout_cart_btn a {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.my_profile {
+  margin-bottom: 170px;
+}
+
+/* ===============  9. CheckOut css Area End  ============== */
+
+/* ===============  9. CheckOut css Area End  ============== */
+.landingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  background: url("../assets/img/landingbg.png") no-repeat scroll 0 0 / cover;
+  position: relative;
+}
+.landingPage:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.landing_page_text {
+  position: relative;
+  z-index: 99;
+  padding-top: 50px;
+}
+.landingFormArea {
+  text-align: center;
+}
+.landingFormArea h2 {
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  display: block;
+}
+.landingFormArea a {
+  color: #fff;
+  font-size: 22px;
+}
+.landingFormArea a img {
+  width: 160px;
+  margin-bottom: 50px;
+}
+.landingFormArea p {
+  color: #ffff;
+  font-size: 15px;
+  padding: 10px 0 30px 0;
+}
+
+/* text area end landing page  */
+.landingInputArea input {
+  margin-bottom: 16px;
+}
+.landingInputArea_single input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #000;
+  border: 0;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 0;
+  font-size: 16px;
+}
+.landingInputArea_single input:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+.inputBtn {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #c5c3c0;
+  color: #171a21;
+  border: 0;
+  border: 1px solid gray;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.inputBtn:hover {
+  color: #c5c3c0;
+  background-color: #171a21;
+}
+
+/* accout area start  */
+.landingPage .input_single_cart_main {
+  background: rgba(0, 0, 0, 0.4);
+}
+.landingPage .input_single_cart input {
+  background: #fff;
+}
+.landingPage .input_single_cart_main h2 {
+  color: #fff;
+  text-align: left;
+}
+
+/* ===============  9. CheckOut css Area End  ============== */
+/* ===============  10. Pagination css Start  ============== */
+
+.pagination {
+  list-style: none;
+  display: flex;
+ 
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+.pagination .page-num {
+  font-size: 20px;
+  color: #000;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.pagination .page-num:hover {
+  font-size: 20px;
+  background-color: #646060;
+  color: #ffffff;
+}
+.pagination .active {
+  background-color: #000;
+  color: #ffffff;
+  font-weight: 700;
+}
