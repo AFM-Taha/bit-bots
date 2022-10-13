@@ -364,6 +364,14 @@ p {
   color: #fff;
   background-color: #000;
 }
+.active {
+  color: #fff;
+  background-color: #000;
+}
+.active > li {
+  color: #fff;
+  background-color: #000;
+}
 
 /* ===============  2. Menu css Area End  ============== */
 
