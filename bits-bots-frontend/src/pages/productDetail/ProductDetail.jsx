@@ -108,7 +108,7 @@ const ProductDetail = () => {
                       </div>
 
                       <div class='prodcut_price_details'>
-                        <div id='ra' class='textContent'>
+                        {/* <div id='ra' class='textContent'>
                           <h3>499 NOK</h3>
                         </div>
 
@@ -118,7 +118,7 @@ const ProductDetail = () => {
 
                         <div id='ki' class='textContent'>
                           <h3>777 NOK</h3>
-                        </div>
+                        </div> */}
                         <div id='ki' class='textContent'>
                           <h3>Price: $ {price}.00</h3>
                         </div>
