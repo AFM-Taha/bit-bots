@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverUrl = "https://bits-bots-server.onrender.com/api/v1";
+const serverUrl = "http://localhost:5000/api/v1";
 
 // get all games api
 
