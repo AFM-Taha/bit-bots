@@ -26,6 +26,9 @@ const HeaderAndNavbar = () => {
     dispatch(signOut())
     navigate('/login')
   }
+  const handleSearch = () => {
+    navigate('/search-result')
+  }
 
   return (
     <div>
@@ -39,9 +42,17 @@ const HeaderAndNavbar = () => {
               </Link>
             </div>
             <div className='search'>
-              <div className='desktopVersion_search d-md-block d-none'>
-                <form action='index.html' method='POST'>
-                  <input type='text' name='search' placeholder='Search..' />
+              <div
+                onPress={handleSearch}
+                className='desktopVersion_search d-md-block d-none'
+              >
+                <form>
+                  <input
+                    required
+                    type='text'
+                    name='search'
+                    placeholder='Search..'
+                  />
                   <button>
                     <FontAwesomeIcon icon={faSearch} />
                   </button>

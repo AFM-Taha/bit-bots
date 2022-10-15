@@ -152,7 +152,7 @@ const Register = () => {
                                 class='form-control'
                                 type='password'
                                 name='phone'
-                                placeholder='New your password'
+                                placeholder='Create Password'
                                 required
                               />
                             </div>
@@ -162,9 +162,9 @@ const Register = () => {
                             <div class='input_single_cart'>
                               <input
                                 class='form-control'
-                                type='confirmPassword'
-                                placeholder='Confirm your password'
-                                name='password'
+                                type='password'
+                                placeholder='Confirm Password'
+                                name=' confirmPassword'
                                 required
                               />
                             </div>
