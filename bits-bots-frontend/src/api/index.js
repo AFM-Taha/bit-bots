@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverUrl = "https://bits-bots-server.onrender.com/api/v1";
+const serverUrl = "http://localhost:5000/api/v1";
 
 // get all games api
 
@@ -63,11 +63,17 @@ export const getAllPlatformsApi = async () => {
 // register new user
 
 export const registerUser = async (userData) => {
-  const { userName, email, password } = userData;
+  const { userName, email, password, city, streetAddress, phone, zipCode } =
+    userData;
+  console.log(userName, email, password);
   const response = await axios.post(`${serverUrl}/user/register-user`, {
     userName: userName,
     email,
     password,
+    city: city || "",
+    streetAddress: streetAddress || "",
+    phone: phone || "",
+    zipCode: zipCode || "",
   });
   if (response.status > 300) return;
 

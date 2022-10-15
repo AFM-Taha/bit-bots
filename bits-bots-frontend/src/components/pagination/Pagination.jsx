@@ -10,7 +10,7 @@ const Pagination = ({ products }) => {
   const dispatch = useDispatch();
   const handlePageClick = (event) => {
     setEvent(event);
-    // dispatch(handlePagination({ event, products }));
+    dispatch(handlePagination({ event, products }));
   };
   useEffect(() => {
     dispatch(handlePagination({ event, products }));
