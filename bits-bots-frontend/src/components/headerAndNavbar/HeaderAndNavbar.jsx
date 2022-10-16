@@ -42,10 +42,7 @@ const HeaderAndNavbar = () => {
               </Link>
             </div>
             <div className='search'>
-              <div
-                onPress={handleSearch}
-                className='desktopVersion_search d-md-block d-none'
-              >
+              <div className='desktopVersion_search d-md-block d-none'>
                 <form>
                   <input
                     required
@@ -53,7 +50,7 @@ const HeaderAndNavbar = () => {
                     name='search'
                     placeholder='Search..'
                   />
-                  <button>
+                  <button type='submit' onClick={handleSearch}>
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </form>
