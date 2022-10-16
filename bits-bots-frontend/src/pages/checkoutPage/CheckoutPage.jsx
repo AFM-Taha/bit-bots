@@ -9,10 +9,12 @@ import defaultCover from "../../assets/img/No Cover Available.png";
 import { removeCart } from "../../redux/features/cart/cartSlice";
 
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.cart);
-  const { user } = useSelector((state) => state.user);
+  const [user, loading] = useAuthState(auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

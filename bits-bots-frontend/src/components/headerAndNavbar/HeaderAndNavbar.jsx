@@ -5,29 +5,31 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 
-import { signOut } from '../../redux/features/user/userSlice'
+// import { signOut } from '../../redux/features/user/userSlice'
+
+import { signOut } from 'firebase/auth'
 
 import logo from '../../assets/img/logo.png'
+import auth from '../../firebase.init'
+import { useState } from 'react'
 
 const HeaderAndNavbar = () => {
   const { cart } = useSelector((state) => state.cart)
   const { isLoading, platforms, error } = useSelector(
     (state) => state.platforms
   )
+  const [searchText, setSearchText] = useState('')
   const navigate = useNavigate()
 
-  const dispatch = useDispatch()
-
   const handleLogOut = () => {
-    dispatch(signOut())
-    navigate('/login')
+    signOut(auth).then(() => navigate('/login'))
   }
   const handleSearch = () => {
-    navigate('/search-result')
+    navigate(`/search-result/${searchText}`)
   }
 
   return (
@@ -42,15 +44,19 @@ const HeaderAndNavbar = () => {
               </Link>
             </div>
             <div className='search'>
-              <div className='desktopVersion_search d-md-block d-none'>
+              <div
+                onPress={handleSearch}
+                className='desktopVersion_search d-md-block d-none'
+              >
                 <form>
                   <input
                     required
                     type='text'
                     name='search'
                     placeholder='Search..'
+                    onChange={(e) => setSearchText(e.target.value)}
                   />
-                  <button type='submit' onClick={handleSearch}>
+                  <button onClick={handleSearch}>
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </form>
