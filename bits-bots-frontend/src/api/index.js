@@ -63,28 +63,22 @@ export const getAllPlatformsApi = async () => {
 // register new user
 
 export const registerUser = async (userData) => {
-  const { userName, email, password } = userData;
   const response = await axios.post(`${serverUrl}/user/register-user`, {
-    userName: userName,
-    email,
-    password,
+    ...userData,
   });
   if (response.status > 300) return;
-
-  localStorage.setItem("accessToken", response?.data?.accessToken);
-  localStorage.setItem("refreshToken", response?.data?.refreshToken);
 
   return response;
 };
 
 // login user
 
-export const loginUser = async (userData) => {
-  const response = await axios.post(`${serverUrl}/user/login-user`, userData);
+export const createUser = async (userData) => {
+  const response = await axios.post(`${serverUrl}/user/create-user`, userData);
   if (response.status > 300) return;
 
-  localStorage.setItem("accessToken", response?.data?.accessToken);
-  localStorage.setItem("refreshToken", response?.data?.refreshToken);
+  // localStorage.setItem("accessToken", response?.data?.accessToken);
+  // localStorage.setItem("refreshToken", response?.data?.refreshToken);
 
   return response;
 };

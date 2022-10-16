@@ -1,189 +1,211 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import logo from '../../assets/img/logo.png'
-import Spinner from '../../components/spinner/Spinner'
-import { registerNewUser } from '../../redux/features/user/userSlice'
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { createUser, registerUser } from "../../api";
+import logo from "../../assets/img/logo.png";
+import Spinner from "../../components/spinner/Spinner";
+import auth from "../../firebase.init";
+// import { registerNewUser } from '../../redux/features/user/userSlice'
 
 const Register = () => {
-  const { isLoading, user } = useSelector((state) => state.user)
+  // const { isLoading, user } = useSelector((state) => state.user)
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
-  const navigate = useNavigate()
-  const [errorText, setErrorText] = useState('')
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [errorText, setErrorText] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleRegister = (e) => {
-    setErrorText('')
-    e.preventDefault()
-    const firstName = e.target.firstname.value
-    const lastName = e.target.lastname.value
-    const userName = firstName + ' ' + lastName
-    const email = e.target.email.value
-    const password = e.target.password.value
-    const confirmPassword = e.target.password.value
+    setErrorText("");
+    e.preventDefault();
+    const firstName = e.target.firstname.value;
+    const lastName = e.target.lastname.value;
+    const userName = firstName + " " + lastName;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.password.value;
+    const city = e.target.city.value;
+    const phone = e.target.phone.value;
+    const zipCode = e.target.zipcode.value;
+    const streetAddress = e.target.streetaddress.value;
     if (confirmPassword !== password)
-      return setErrorText('New password and Confirm Password Does Not match')
-    const userData = { userName, email, password }
+      return setErrorText("New password and Confirm Password Does Not match");
+    const userData = { userName, email, city, phone, zipCode, streetAddress };
 
-    dispatch(registerNewUser(userData))
-  }
+    createUserWithEmailAndPassword(email, password).then(() => {
+      const url = "http://localhost:5000/api/v1/user/create-user";
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    });
+  };
+
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user?.email) {
-      navigate('/')
+    if (user?.user?.email) {
+      navigate(from, { replace: true });
     }
-  }, [user, navigate])
+  }, [user, navigate]);
 
-  if (isLoading) {
-    return <Spinner />
+  if (loading) {
+    return <Spinner />;
   }
 
   return (
-    <section class='landingPage'>
-      <div class='container'>
+    <section class="landingPage">
+      <div class="container">
         <form onSubmit={handleRegister}>
-          <div class='landing_page_text'>
-            <div class='row'>
-              <div class='col-md-10 offset-md-1 col-lg-8 offset-lg-2'>
+          <div class="landing_page_text">
+            <div class="row">
+              <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 {/* <!-- landing page start  --> */}
-                <div class='landingFormArea'>
-                  <Link to='/'>
-                    <img src={logo} alt='images' />
+                <div class="landingFormArea">
+                  <Link to="/">
+                    <img src={logo} alt="images" />
                   </Link>
-                  <div class='inputCart_text'>
+                  <div class="inputCart_text">
                     {/* <!-- single main cart start  --> */}
-                    <div class='input_single_cart_main'>
+                    <div class="input_single_cart_main">
                       <h2> My Profile</h2>
-                      <form action='' method='POST'>
-                        <div class='row g-4'>
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='text'
-                                name='firstname'
-                                placeholder='First Name'
-                                required
-                              />
-                            </div>
-                          </div>
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='text'
-                                name='lastname'
-                                placeholder='Last Name'
-                                required
-                              />
-                            </div>
-                          </div>
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-12'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='text'
-                                name='StreetAdress'
-                                placeholder='Street Adress'
-                                required
-                              />
-                            </div>
-                          </div>
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='text'
-                                name='zipcode'
-                                placeholder='Zip code'
-                                required
-                              />
-                            </div>
-                          </div>
 
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='text'
-                                name='city'
-                                placeholder='City'
-                                required
-                              />
-                            </div>
-                          </div>
-
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='email'
-                                name='email'
-                                placeholder='Email (user id)'
-                                required
-                              />
-                            </div>
-                          </div>
-
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='text'
-                                name='phone'
-                                placeholder='Phone'
-                                required
-                              />
-                            </div>
-                          </div>
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='password'
-                                name='phone'
-                                placeholder='Create Password'
-                                required
-                              />
-                            </div>
-                          </div>
-                          {/* <!-- single input area  --> */}
-                          <div class='col-md-6'>
-                            <div class='input_single_cart'>
-                              <input
-                                class='form-control'
-                                type='password'
-                                placeholder='Confirm Password'
-                                name=' confirmPassword'
-                                required
-                              />
-                            </div>
-                          </div>
-                          {/* <!-- btn area  input area  --> */}
-                          <div class='col-md-12'>
-                            <div class='input_single_cartBtn'>
-                              {errorText && (
-                                <p style={{ color: 'red' }}>{errorText}</p>
-                              )}
-                              <input
-                                class='btn-style'
-                                type='submit'
-                                value='REGISTER'
-                              />
-                            </div>
+                      <div class="row g-4">
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="firstname"
+                              placeholder="First Name"
+                              required
+                            />
                           </div>
                         </div>
-                      </form>
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="lastname"
+                              placeholder="Last Name"
+                              required
+                            />
+                          </div>
+                        </div>
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-12">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="streetaddress"
+                              placeholder="Street Adress"
+                              required
+                            />
+                          </div>
+                        </div>
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="zipcode"
+                              placeholder="Zip code"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="city"
+                              placeholder="City"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="email"
+                              name="email"
+                              placeholder="Email"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="text"
+                              name="phone"
+                              placeholder="Phone"
+                              required
+                            />
+                          </div>
+                        </div>
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="password"
+                              name="password"
+                              placeholder="Create Password"
+                              required
+                            />
+                          </div>
+                        </div>
+                        {/* <!-- single input area  --> */}
+                        <div class="col-md-6">
+                          <div class="input_single_cart">
+                            <input
+                              class="form-control"
+                              type="password"
+                              placeholder="Confirm Password"
+                              name=" confirmPassword"
+                              required
+                            />
+                          </div>
+                        </div>
+                        {/* <!-- btn area  input area  --> */}
+                        <div class="col-md-12">
+                          <div class="input_single_cartBtn">
+                            {errorText && (
+                              <p style={{ color: "red" }}>{errorText}</p>
+                            )}
+                            <input
+                              class="btn-style"
+                              type="submit"
+                              value="REGISTER"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     {/* <!-- single main cart End  --> */}
                   </div>
@@ -253,7 +275,7 @@ const Register = () => {
     //     </div>
     //   </div>
     // </section>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
