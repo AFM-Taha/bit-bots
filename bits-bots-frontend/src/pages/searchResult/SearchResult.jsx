@@ -64,7 +64,7 @@ const SearchResult = () => {
           {/* Product Section */}
           <section className="item">
             <div className="container card-container">
-              <div className="item_text card-item-container">
+              <div className="item_text card-item-container justify-content-start">
                 {products &&
                   currentItems.map((product) => (
                     <ProductCard key={product.id} product={product} />

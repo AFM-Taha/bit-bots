@@ -13,9 +13,10 @@ const app = express();
 
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.json());
 app.use(cors());
 
-const run = () => {
+function run() {
   try {
     app.use("/api/v1/games", setToken, gamesRoute);
     app.use("/api/v1/platforms", setToken, platformRoute);
@@ -23,7 +24,7 @@ const run = () => {
   } catch (error) {
     res.status(501).send({ message: "internel server error", error });
   }
-};
+}
 run();
 
 export default app;

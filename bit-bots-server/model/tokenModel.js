@@ -6,6 +6,10 @@ const tokenSchema = mongoose.Schema({
     require: true,
   },
 
+  userId: {
+    type: String,
+  },
+
   createdAt: {
     type: Date,
     default: () => new Date(),

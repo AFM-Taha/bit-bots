@@ -29,11 +29,11 @@ const Login = () => {
 
     if (!email && !password) return;
 
-    // signInWithEmailAndPassword(email, password).then(() => {
-    //   dispatch(si);
-    // });
+    signInWithEmailAndPassword(email, password).then(() => {
+      dispatch(signInUser({ email, password }));
+    });
 
-    dispatch(signInUser({ email, password }));
+    // dispatch(signInUser({ email, password }));
   };
 
   const from = location.state?.from?.pathname || "/";

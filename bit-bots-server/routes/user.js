@@ -10,7 +10,9 @@ import verifyUserAuthToken from "../middleware/verifyUserAuthToken.js";
 
 const router = Router();
 
-router.route("/register-user").post(registerNewUserController);
+router.post("/register-user", (req, res) => {
+  console.log(req.body);
+});
 router.route("/login-user").post(loginUserController);
 router.patch("/update-user", verifyUserAuthToken, updateUserController);
 router.post("/check-user", verifyUserAuthToken, checkUserController);

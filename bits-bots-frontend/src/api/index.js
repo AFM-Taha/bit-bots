@@ -56,6 +56,7 @@ export const getAllPlatformsApi = async () => {
 //     const data = modifiedData(game);
 //     return data;
 //   });
+//register-user
 
 //   return modifiedGameData;
 // };
@@ -66,19 +67,24 @@ export const registerUser = async (userData) => {
   const { userName, email, password, city, streetAddress, phone, zipCode } =
     userData;
   console.log(userName, email, password);
-  const response = await axios.post(`${serverUrl}/user/register-user`, {
-    userName: userName,
-    email,
-    password,
-    city: city || "",
-    streetAddress: streetAddress || "",
-    phone: phone || "",
-    zipCode: zipCode || "",
-  });
+  const response = await axios.post(
+    `http://localhost:5000/api/v1/user/register-user`,
+    {
+      userName: userName,
+      email,
+      password,
+      city: city || "",
+      streetAddress: streetAddress || "",
+      phone: phone || "",
+      zipCode: zipCode || "",
+    }
+  );
   if (response.status > 300) return;
 
   localStorage.setItem("accessToken", response?.data?.accessToken);
   localStorage.setItem("refreshToken", response?.data?.refreshToken);
+
+  console.log(response);
 
   return response;
 };

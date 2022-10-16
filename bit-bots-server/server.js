@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000;
 // connect db and listening to the server
 
 dbConnection.then(() => {
-  app.listen(port, () => console.log("server is running"));
+  app.listen(port, () => console.log("server is running on " + port));
 });
 
 // all games api = http://localhost:5000/api/v1/games/all-games this is the api to get all the games data
