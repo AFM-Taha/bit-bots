@@ -11,6 +11,7 @@ import Pagination from "../../components/pagination/Pagination";
 const HomePage = () => {
   const { isLoading, products, error } = useSelector((state) => state.products);
   const currentItems = useSelector((state) => state.pagination.currentItems);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <>

@@ -44,94 +44,26 @@ export const getAllPlatformsApi = async () => {
   return data;
 };
 
-// get perticular platform games
-
-// export const getPlatformGames = async (id, products) => {
-//   // const { data } = await axios.get(`${serverUrl}/games/platforms?id=${id}`);
-//   const platformID = parseFloat(id);
-
-//   const platformGames = propertyGames(products, platformID, "platforms", 0, 0);
-
-//   const modifiedGameData = platformGames.map((game) => {
-//     const data = modifiedData(game);
-//     return data;
-//   });
-
-//   return modifiedGameData;
-// };
-
-// register new user
-
 export const registerUser = async (userData) => {
-  const response = await axios.post(`${serverUrl}/user/register-user`, {
+  const response = await axios.post(`${serverUrl}/user/create-user`, {
     ...userData,
   });
-  if (response.status > 300) return;
+  // if (response.status > 300) return;
 
   return response;
 };
-
-// login user
 
 export const createUser = async (userData) => {
   const response = await axios.post(`${serverUrl}/user/create-user`, userData);
   if (response.status > 300) return;
 
-  // localStorage.setItem("accessToken", response?.data?.accessToken);
-  // localStorage.setItem("refreshToken", response?.data?.refreshToken);
-
   return response;
 };
-
-// check user
-
-export const checkuser = async () => {
-  const accessToken = localStorage.getItem("accessToken");
-  const refreshToken = localStorage.getItem("refreshToken");
-
-  if (!accessToken || !refreshToken) {
-    return { success: false, message: "Not user" };
-  }
-
-  const response = await axios.post(
-    `${serverUrl}/user/check-user`,
-    {
-      refreshToken,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  );
-
-  if (!response.data.user) return { success: false, message: "Not user" };
-
-  return response;
-};
-
-// update user
 
 export const updateUser = async (userData) => {
-  const accessToken = localStorage.getItem("accessToken");
-  const refreshToken = localStorage.getItem("refreshToken");
-
-  if (!accessToken || !refreshToken) {
-    return { success: false, message: "Not user" };
-  }
-
-  const response = await axios.patch(
-    `${serverUrl}/user/update-user`,
-    {
-      ...userData,
-      refreshToken,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  );
+  const response = await axios.patch(`${serverUrl}/user/update-user`, {
+    ...userData,
+  });
 
   return response;
 };
@@ -139,23 +71,16 @@ export const updateUser = async (userData) => {
 // payment
 
 export const makePayment = async (data) => {
-  const accessToken = localStorage.getItem("accessToken");
-  const refreshToken = localStorage.getItem("refreshToken");
+  const response = await axios.post(`${serverUrl}/user/payment`, {
+    ...data,
+  });
 
-  if (!accessToken || !refreshToken) {
-    return { success: false, message: "Not user" };
-  }
-  const response = await axios.post(
-    `${serverUrl}/user/payment`,
-    {
-      ...data,
-      refreshToken,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
+  return response;
+};
+
+export const getUserApi = async (email) => {
+  const response = await axios.get(
+    `${serverUrl}/user/single-user?email=${email}`
   );
 
   return response;

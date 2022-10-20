@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { createUser, registerUser } from "../../api";
+import { createUser } from "../../api";
 import logo from "../../assets/img/logo.png";
 import Spinner from "../../components/spinner/Spinner";
 import auth from "../../firebase.init";
 // import { registerNewUser } from '../../redux/features/user/userSlice'
+// import { createUser } from "../../api";
 
 const Register = () => {
   // const { isLoading, user } = useSelector((state) => state.user)
@@ -38,16 +39,18 @@ const Register = () => {
     const userData = { userName, email, city, phone, zipCode, streetAddress };
 
     createUserWithEmailAndPassword(email, password).then(() => {
-      const url = "http://localhost:5000/api/v1/user/create-user";
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+      createUser(userData).then((data) => console.log(data));
+
+      // const url = "http://localhost:5000/api/v1/user/create-user";
+      // fetch(url, {
+      //   method: "POST",
+      //   headers: {
+      //     "content-type": "application/json",
+      //   },
+      //   body: JSON.stringify(userData),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data));
     });
   };
 

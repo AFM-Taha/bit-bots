@@ -7,76 +7,86 @@ import userModel from "../model/userModel.js";
 import tokenModel from "../model/tokenModel.js";
 import genarateToken from "../utils/genarateToken.js";
 
-export const registerNewUserController = async (req, res) => {
-  const { userName, email, password } = req.body;
+// export const registerNewUserController = async (req, res) => {
+//   const { userName, email, city, phone, streetAddress, zipCode } = req.body;
 
-  // check email and password is present
+//   if (!email)
+//     return res.status(401).send({ message: "must have a email to register" });
 
-  if (!email)
-    return res.status(401).send({ message: "must have a email to register" });
-  if (!password)
-    return res
-      .status(401)
-      .send({ message: "must have a password to register" });
+//   // ******
+//   try {
+//     const exists = await userModel.findOne({ email });
 
-  // ******
+//     // check user exists
+//     if (exists) return res.status(404).send({ message: "user already exists" });
+
+//     // gen salt and hashed password
+
+//     // create and save user
+
+//     const newUser = new userModel({
+//       userName,
+//       streetAddress,
+//       city,
+//       phone,
+//       zip: zipCode,
+//       email,
+//     });
+//     await newUser.save();
+
+//     // create access and refresh token
+
+//     // const { accessToken, refreshToken } = await genarateToken(email);
+
+//     // send response
+
+//     res.status(201).send({
+//       message: "successfully created a new user",
+
+//       email: newUser.email,
+//     });
+//   } catch (error) {
+//     res.status(501).send({ message: "internel server error", error });
+//   }
+// };
+
+export const createUserController = async (req, res) => {
+  const { userName, email, city, phone, streetAddress, zipCode } = req.body;
+
   try {
-    const exists = await userModel.findOne({ email });
-
     // check user exists
+    const exists = await userModel.findOne({ email });
     if (exists) return res.status(404).send({ message: "user already exists" });
 
-    // gen salt and hashed password
-
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    // create and save user
-
     const newUser = new userModel({
-      userName: userName,
+      userName,
       email,
-      password: hashedPassword,
+      city,
+      phone,
+      streetAddress,
+      zip: zipCode,
     });
+
     await newUser.save();
 
-    // create access and refresh token
-
-    const { accessToken, refreshToken } = await genarateToken(email);
-
-    // send response
-
     res.status(201).send({
-      message: "successfully created a new user",
-      accessToken,
-      refreshToken,
-      email: newUser.email,
+      message: "created user successfully",
+
+      user: newUser,
     });
   } catch (error) {
     res.status(501).send({ message: "internel server error", error });
   }
 };
 
-export const loginUserController = async (req, res) => {
-  const { email, password } = req.body;
-
+export const getUserController = async (req, res) => {
+  const email = req.query.email;
   try {
     // check user exists
-    const exists = await userModel.findOne({ email });
-    if (!exists) return res.status(404).send({ message: "user not exists" });
+    const user = await userModel.findOne({ email });
+    if (!user) return res.status(401).send({ message: "user not exists" });
 
-    const isPasswordMatched = await bcrypt.compare(password, exists.password);
-
-    if (!isPasswordMatched)
-      return res.status(401).send({ message: "password don't match" });
-
-    const { accessToken, refreshToken } = await genarateToken(email);
-    res.status(201).send({
-      message: "logged in successfully",
-      accessToken,
-      refreshToken,
-      email: exists.email,
-    });
+    res.status(201).send({ success: true, user });
   } catch (error) {
     res.status(501).send({ message: "internel server error", error });
   }
@@ -84,36 +94,27 @@ export const loginUserController = async (req, res) => {
 
 // check user is logged in
 
-export const checkUserController = async (req, res) => {
-  const email = req.decoded.email;
+// export const checkUserController = async (req, res) => {
+//   const email = req.decoded.email;
 
-  try {
-    const exists = await userModel.findOne({ email });
+//   try {
+//     const exists = await userModel.findOne({ email });
 
-    if (!exists) {
-      return res.status(401).send({ message: "user not found" });
-    }
-    return res
-      .status(201)
-      .send({ success: true, message: "User found", user: email });
-  } catch (error) {
-    res.status(501).send({ message: "internel server error", error });
-  }
-};
+//     if (!exists) {
+//       return res.status(401).send({ message: "user not found" });
+//     }
+//     return res
+//       .status(201)
+//       .send({ success: true, message: "User found", user: email });
+//   } catch (error) {
+//     res.status(501).send({ message: "internel server error", error });
+//   }
+// };
 
 // update user information
 
 export const updateUserController = async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    zipCode,
-    phone,
-    streetAddress,
-    password,
-    email,
-    city,
-  } = req.body;
+  const { userName, email, city, phone, streetAddress, zipCode } = req.body;
 
   try {
     // check user exists
@@ -121,13 +122,9 @@ export const updateUserController = async (req, res) => {
 
     if (!exists) return res.status(404).send({ message: "user not exists" });
 
-    const isPasswordMatched = await bcrypt.compare(password, exists.password);
-    if (!isPasswordMatched)
-      return res.status(401).send({ message: "password don't matchs" });
-
     const updatedDoc = {
       $set: {
-        userName: `${firstName} ${lastName}`,
+        userName,
         zip: zipCode,
         phone,
         streetAddress,

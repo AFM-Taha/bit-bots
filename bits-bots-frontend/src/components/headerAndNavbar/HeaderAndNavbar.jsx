@@ -23,19 +23,23 @@ const HeaderAndNavbar = () => {
     (state) => state.platforms
   );
   const [searchText, setSearchText] = useState("");
+  const [openMenu, setOpenMenu] = useState(false);
+  const [searchModal, setSearchModal] = useState(false);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
     signOut(auth).then(() => navigate("/login"));
   };
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchModal(false);
     navigate(`/search-result/${searchText}`);
   };
 
   return (
     <div>
       {/* <!-- ============   1. Header area start   ============= --> */}
-      <header className="header_area ">
+      <header className="header_area">
         <div className="container">
           <div className="header_text">
             <div className="logo">
@@ -60,40 +64,6 @@ const HeaderAndNavbar = () => {
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </form>
-              </div>
-              <div className="mobile_version_search  d-md-none d-block">
-                <div id="search_popup" className="content_pop">
-                  <div className="popup_w searchpopup">
-                    <div className="search_big icon-search_icon">
-                      <form
-                        role="search"
-                        id="search-form"
-                        className="search-form"
-                        action=""
-                      >
-                        <input
-                          type="text"
-                          name="s"
-                          id="keyword"
-                          onkeyup="fetch()"
-                          placeholder="Search Dawa Life Sciences"
-                        />
-                        <button>
-                          <FontAwesomeIcon icon={faSearch} />
-                        </button>
-                      </form>
-                      <button
-                        id="closesearch"
-                        title="Close (Esc)"
-                        type="button"
-                        className="mfp-close"
-                      >
-                        ×
-                      </button>
-                    </div>
-                    {/* <!-- <div id="datafetch"></div> --> */}
-                  </div>
-                </div>
               </div>
             </div>
             <div className="cart">
@@ -122,16 +92,55 @@ const HeaderAndNavbar = () => {
                     <FontAwesomeIcon icon={faSignOut} />
                   </p>
                 </li>
-                <li className="d-md-none d-block">
-                  <Link to="/" className="searchoption-none">
+                <li
+                  // onClick={() => setOpenMenu(!openMenu)}
+
+                  onClick={() => setSearchModal(true)}
+                  className="d-md-none d-block"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  <Link className="searchoption-none">
                     <FontAwesomeIcon icon={faSearch} />
                   </Link>
                 </li>
 
+                {/*  */}
+
+                {/* <button type="button" class="btn btn-primary">
+                  Launch demo modal
+                </button> */}
+                <div
+                  className="mobile-search-modal d-md-none"
+                  style={searchModal ? { top: "0" } : { top: "-1000px" }}
+                >
+                  <button
+                    onClick={() => setSearchModal(!searchModal)}
+                    type="button"
+                    class="close position-absolute bg-transparent border-0 text-white top-0"
+                    style={{ fontSize: "50px", right: "15px" }}
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <form onSubmit={handleSearch} className="mobile-search-form">
+                    <input
+                      required
+                      type="text"
+                      name="search"
+                      placeholder="Search.."
+                      onChange={(e) => setSearchText(e.target.value)}
+                    />
+                    <input type="submit" value="search" />
+                  </form>
+                </div>
+
+                {/*  */}
+
                 {/* <!-- mobile humber menu area start  --> */}
                 <li
                   className="rakibHumbergarMenu d-md-none d-block"
-                  onClick="myFunction(this)"
+                  onClick={() => setOpenMenu(!openMenu)}
                 >
                   <div className="bar1"></div>
                   <div className="bar2"></div>
@@ -149,7 +158,10 @@ const HeaderAndNavbar = () => {
       <menu className="menu">
         <div className="container">
           <div className="menuText">
-            <ul>
+            <ul
+              className="align-items-start"
+              style={openMenu ? { top: "65px" } : { top: "-500px" }}
+            >
               {platforms?.map((platform) => {
                 const { id, name } = platform;
                 return (

@@ -313,6 +313,10 @@ p {
   width: 100%;
 }
 
+.mobile-search {
+  display: none;
+}
+
 /* card area */
 .cart ul {
   display: -webkit-box;
@@ -350,6 +354,8 @@ p {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  transition: all 0.8s;
+  z-index: 2;
 }
 .menuText ul li a {
   color: #000;
@@ -714,7 +720,7 @@ p {
   margin-bottom: 20px;
 }
 
-.cart-count{
+.cart-count {
   background-color: #009444;
   border-radius: 50%;
   color: #fff;
@@ -725,7 +731,6 @@ p {
   padding-left: 5px;
   padding-right: 5px;
   padding-right: 5px;
-
 }
 
 /* ===============  9. CheckOut css Area End  ============== */
@@ -869,7 +874,7 @@ p {
 .pagination {
   list-style: none;
   display: flex;
- 
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-bottom: 5rem;
