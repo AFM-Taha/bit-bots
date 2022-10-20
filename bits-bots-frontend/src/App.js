@@ -11,9 +11,18 @@ import Routers from "./routes/Routers";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { fetchUser } from "./redux/features/user/userSlice";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./firebase.init";
 
 function App() {
   const dispatch = useDispatch();
+
+  const [user] = useAuthState(auth);
+
+  useEffect(() => {
+    dispatch(fetchUser(user?.email));
+  }, [dispatch, user]);
 
   useEffect(() => {
     dispatch(fetchProducts());

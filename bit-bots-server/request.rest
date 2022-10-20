@@ -9,13 +9,16 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/api/v1/user/login-user
+POST http://localhost:5000/api/v1/user/create-user
 Content-Type: application/json
 
 {
     "userName": "Munna",
-    "email": "munna@gmail.com",
-    "password": "password"
+    "email": "munna123@gmail.com",
+    "zipCode": "132133",
+    "streetAddress": "23/A Block B gazipur sadar",
+    "city":"gazipur",
+    "phone": "123453214"
 }
 
 ###

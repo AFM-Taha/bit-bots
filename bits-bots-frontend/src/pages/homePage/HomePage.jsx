@@ -9,8 +9,14 @@ import Spinner from '../../components/spinner/Spinner'
 import Pagination from '../../components/pagination/Pagination'
 
 const HomePage = () => {
+<<<<<<< HEAD
   const { isLoading, products, error } = useSelector((state) => state.products)
   const currentItems = useSelector((state) => state.pagination.currentItems)
+=======
+  const { isLoading, products, error } = useSelector((state) => state.products);
+  const currentItems = useSelector((state) => state.pagination.currentItems);
+  const { user } = useSelector((state) => state.user);
+>>>>>>> 136b650b9639d7cf3ed2b324bc004ac9b652bdb4
 
   return (
     <>
