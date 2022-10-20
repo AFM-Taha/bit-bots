@@ -105,7 +105,7 @@ const HeaderAndNavbar = () => {
                   {cart && <p className='cart-count '>{cart?.length}</p>}
                 </li>
                 <li>
-                  <Link to='/my-profile'>
+                  <Link to='/register'>
                     <FontAwesomeIcon icon={faUser} />
                   </Link>
                 </li>

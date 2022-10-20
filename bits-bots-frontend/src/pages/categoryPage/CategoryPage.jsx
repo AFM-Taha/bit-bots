@@ -1,57 +1,57 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import Banner from "../../components/banner/Banner";
-import CategoryCard from "../../components/categoryCard/CategoryCard";
-import Footer from "../../components/footer/Footer";
-import HeaderAndNavbar from "../../components/headerAndNavbar/HeaderAndNavbar";
-import Pagination from "../../components/pagination/Pagination";
-import Spinner from "../../components/spinner/Spinner";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import Banner from '../../components/banner/Banner'
+import CategoryCard from '../../components/categoryCard/CategoryCard'
+import Footer from '../../components/footer/Footer'
+import HeaderAndNavbar from '../../components/headerAndNavbar/HeaderAndNavbar'
+import Pagination from '../../components/pagination/Pagination'
+import Spinner from '../../components/spinner/Spinner'
 
-import { fetchPlatformProducts } from "../../redux/features/platformProducts/platformProducts";
+import { fetchPlatformProducts } from '../../redux/features/platformProducts/platformProducts'
 
-import genreData from "../../assets/genreData";
-import { useState } from "react";
-import isPropertyMatched from "../../assets/isMatched";
-import { initiatePagination } from "../../redux/features/pagination/paginationSlice";
+import genreData from '../../assets/genreData'
+import { useState } from 'react'
+import isPropertyMatched from '../../assets/isMatched'
+import { initiatePagination } from '../../redux/features/pagination/paginationSlice'
 
 const CategoryPage = () => {
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products)
 
-  const { platformGames } = useSelector((state) => state.platformGames);
+  const { platformGames } = useSelector((state) => state.platformGames)
 
-  const currentItems = useSelector((state) => state.pagination.currentItems);
-  console.log(currentItems);
+  const currentItems = useSelector((state) => state.pagination.currentItems)
+  console.log(currentItems)
 
-  const [categoryProducts, setCategoryProducts] = useState([]);
+  const [categoryProducts, setCategoryProducts] = useState([])
 
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPlatformProducts({ id, products }));
-  }, [id, dispatch, products]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setCategoryProducts(currentItems);
-  }, [currentItems]);
+    dispatch(fetchPlatformProducts({ id, products }))
+  }, [id, dispatch, products])
 
   useEffect(() => {
-    dispatch(initiatePagination({ products }));
-  }, [dispatch, products]);
+    setCategoryProducts(currentItems)
+  }, [currentItems])
+
+  useEffect(() => {
+    dispatch(initiatePagination({ products }))
+  }, [dispatch, products])
 
   const handleFilterByGenre = (id) => {
-    const newArr = [];
+    const newArr = []
 
     for (let i = 0; i < platformGames.length; i++) {
-      const checkPlatform = isPropertyMatched(platformGames[i], id, "genres");
+      const checkPlatform = isPropertyMatched(platformGames[i], id, 'genres')
       if (checkPlatform) {
-        newArr.push(platformGames[i]);
+        newArr.push(platformGames[i])
       }
     }
-    setCategoryProducts(newArr);
-  };
+    setCategoryProducts(newArr)
+  }
 
   return (
     <div>
@@ -62,37 +62,37 @@ const CategoryPage = () => {
       ) : (
         <>
           <Banner />
-          <section className="checkBox">
-            <div className="container">
-              <div className="checkBox_text">
-                <div className="d-md-none d-block filter">
-                  <a href="#">
+          <section className='checkBox'>
+            <div className='container'>
+              <div className='checkBox_text'>
+                <div className='d-md-none d-block filter'>
+                  <a href='#'>
                     <i
-                      className="fa fa-sort-amount-desc"
-                      aria-hidden="true"
-                    ></i>{" "}
+                      className='fa fa-sort-amount-desc'
+                      aria-hidden='true'
+                    ></i>{' '}
                     filter
                   </a>
                 </div>
-                <div className="row">
+                <div className='row'>
                   {/* <!-- single item area start  --> */}
-                  <div className="col-md-3">
-                    <div className="left_checkBox_area_extra">
-                      <div className="left_checkBox_area">
-                        <div className="checkbox_area ">
+                  <div className='col-md-3'>
+                    <div className='left_checkBox_area_extra'>
+                      <div className='left_checkBox_area'>
+                        <div className='checkbox_area '>
                           <h2>Genre</h2>
                           {genreData?.map((data) => (
-                            <label key={data.id} class="custom_checkbox_2">
+                            <label key={data.id} class='custom_checkbox_2'>
                               <input
                                 onChange={() => handleFilterByGenre(data.id)}
-                                type="checkbox"
-                                name="genre"
-                              />{" "}
+                                type='checkbox'
+                                name='genre'
+                              />{' '}
                               <p>
-                                {" "}
+                                {' '}
                                 <span>{data.name}</span>
                               </p>
-                              <span className="checkmark"></span>
+                              <span className='checkmark'></span>
                             </label>
                           ))}
                         </div>
@@ -100,17 +100,17 @@ const CategoryPage = () => {
                     </div>
                   </div>
                   {/* <!-- single item area start  --> */}
-                  <div className="col-md-9">
-                    <div className="right_checkBox_area">
-                      <div className="row g-5">
+                  <div className='col-md-9'>
+                    <div className='right_checkBox_area'>
+                      <div className='row g-5'>
                         {categoryProducts.length !== 0 ? (
                           categoryProducts.map((product) => (
                             <CategoryCard key={product.id} product={product} />
                           ))
                         ) : (
                           <p
-                            className="fw-bold"
-                            style={{ textAlign: "center", fontSize: "20px" }}
+                            className='fw-bold'
+                            style={{ textAlign: 'center', fontSize: '20px' }}
                           >
                             No games Available
                           </p>
@@ -127,7 +127,7 @@ const CategoryPage = () => {
       <Pagination products={platformGames} />
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default CategoryPage;
+export default CategoryPage
